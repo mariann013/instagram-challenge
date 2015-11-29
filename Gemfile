@@ -5,6 +5,7 @@ gem 'haml'
 gem 'factory_girl_rails'
 gem 'simple_form'
 gem 'paperclip'
+gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record

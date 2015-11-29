@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 
 feature 'Creating posts' do
   scenario 'Can create a post with a caption' do
@@ -19,4 +20,14 @@ feature 'Creating posts' do
     expect(page).to have_content("Please upload an image with your post!")
   end
 
+end
+
+feature 'Can view individual posts' do
+  scenario 'Can click and view a single post' do
+    post = create(:post)
+
+    visit '/'
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    expect(page.current_path).to eq(post_path(post))
+  end
 end

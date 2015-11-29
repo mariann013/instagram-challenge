@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   def index
+    @posts = Post.all
   end
 
   def new
@@ -26,4 +27,25 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "Post has been updated"
+      redirect_to(post_path(@post))
+    else
+      flash[:notice] = "Something is wrong with your upload!"
+      render :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "Post has been deleted"
+    redirect_to posts_path
+  end
 end
